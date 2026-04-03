@@ -1,0 +1,127 @@
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #dfe9f3, #ffffff);
+    margin: 0;
+    padding: 20px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 650px;
+    margin: auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* HEADING */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* LABEL */
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 10px;
+    display: block;
+}
+
+/* INPUT FIELDS */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* FOCUS EFFECT */
+input:focus, select:focus, textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52,152,219,0.3);
+}
+
+/* TEXTAREA */
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* BUTTON GROUP */
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* BUTTON */
+button {
+    width: 48%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* SUBMIT BUTTON */
+.submit {
+    background: #27ae60;
+    color: white;
+}
+
+.submit:hover {
+    background: #219150;
+}
+
+/* DOWNLOAD BUTTON */
+.download {
+    background: #2980b9;
+    color: white;
+}
+
+.download:hover {
+    background: #1f6692;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:600px){
+    .btn-group {
+        flex-direction: column;
+    }
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* 🔥 PDF CONTENT FIX (MOST IMPORTANT) */
+#pdfContent {
+    position: absolute;
+    left: -9999px;   /* screen se bahar */
+    top: 0;
+    background: white;
+    width: 800px;
+    padding: 20px;
+}
+
+/* PDF TEXT STYLE */
+#pdfContent h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#pdfContent p {
+    font-size: 14px;
+    margin: 5px 0;
+}

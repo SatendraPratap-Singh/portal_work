@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Job Planning</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #dfe9f3, #ffffff);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+    margin-top: 10px;
+    display: block;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52,152,219,0.3);
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    width: 48%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit {
+    background: #27ae60;
+    color: white;
+}
+
+.submit:hover {
+    background: #219150;
+}
+
+.download {
+    background: #2980b9;
+    color: white;
+}
+
+.download:hover {
+    background: #1f6692;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+<h2>Daily Job Planning</h2>
+
+<form id="jobForm">
+
+<label>Date</label>
+<input type="date" id="date">
+
+<label>Line</label>
+<select id="line">
+<option value="">Select Line</option>
+<option value="Clinkerization">Clinkerization</option>
+<option value="Cement Unit">Cement Unit</option>
+<option value="Power Plant">Power Plant</option>
+</select>
+
+<label>Department</label>
+<select id="department">
+<option>Select Department</option>
+<option>Mechanical</option>
+<option>Process</option>
+<option>Electrical</option>
+<option>Instrument</option>
+<option>Civil</option>
+<option>Automobile</option>
+<option>Mines</option>
+<option>HR & Admin</option>
+<option>IT</option>
+<option>O&M</option>
+</select>
+
+<label>Location</label>
+<input type="text" id="location">
+
+<label>Activity</label>
+<textarea id="activity"></textarea>
+
+<label>Job Category</label>
+<select id="category">
+<option>Select Category</option>
+<option>Maintenance</option>
+<option>Inspection</option>
+<option>Repair</option>
+</select>
+
+<label>Priority</label>
+<select id="priority">
+<option>Select Priority</option>
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+</select>
+
+<label>Job Done by</label>
+<input type="text" id="person">
+
+<label>Critical Activity Involved</label>
+<select id="critical">
+<option>Select Activity Type</option>
+<option>Working at height</option>
+<option>Confined space entry</option>
+<option>Electrical Safety</option>
+<option>LOTOTO</option>
+<option>Hot Work</option>
+<option>Material lowering and lifting</option>
+<option>Scaffolding work</option>
+<option>Conveyor Maintenance</option>
+</select>
+
+<label>1st Person Responsible</label>
+<input type="text" id="supervisor">
+
+<label>Contact Number</label>
+<input type="text" id="contact">
+
+<label>Permit Status</label>
+<select id="permit">
+<option>Select Status</option>
+<option>Approved</option>
+<option>Pending</option>
+</select>
+
+<label>HIRA / SOP</label>
+<select id="hira">
+<option>Select Availability</option>
+<option>Available</option>
+<option>Not Available</option>
+</select>
+
+<label>Activity Status</label>
+<select id="status">
+<option>Planned</option>
+<option>Ongoing</option>
+<option>Completed</option>
+</select>
+
+<div class="btn-group">
+<button type="button" onclick="saveData()" class="submit">Submit</button>
+<button type="button" onclick="downloadPDF()" class="download">Download PDF</button>
+</div>
+
+</form>
+</div>
+<div id="pdfContent" style="display:none;background:white;">
+    <h2>Daily Job Report</h2>
+
+    <p><b>Date:</b> <span id="p_date"></span></p>
+    <p><b>Line:</b> <span id="p_line"></span></p>
+    <p><b>Department:</b> <span id="p_department"></span></p>
+    <p><b>Location:</b> <span id="p_location"></span></p>
+    <p><b>Activity:</b> <span id="p_activity"></span></p>
+    <p><b>Category:</b> <span id="p_category"></span></p>
+    <p><b>Priority:</b> <span id="p_priority"></span></p>
+    <p><b>Person:</b> <span id="p_person"></span></p>
+    <p><b>Critical:</b> <span id="p_critical"></span></p>
+    <p><b>Supervisor:</b> <span id="p_supervisor"></span></p>
+    <p><b>Contact:</b> <span id="p_contact"></span></p>
+    <p><b>Permit:</b> <span id="p_permit"></span></p>
+    <p><b>HIRA:</b> <span id="p_hira"></span></p>
+    <p><b>Status:</b> <span id="p_status"></span></p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
